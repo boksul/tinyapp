@@ -71,5 +71,14 @@ app.get("/urls/:shortURL", (req, res) => {
   } else {
     res.sendStatus(400);
   }
-  // const longURL = ...
+});
+
+app.post("/urls/:shortURL/delete", (req, res) => {
+  let updateURL = req.params.shortURL;
+  for (let key in urlDatabase) {
+    if (key === updateURL) {
+      delete urlDatabase[key];
+    }
+  }
+  res.redirect("/urls");
 });
