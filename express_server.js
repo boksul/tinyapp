@@ -13,8 +13,14 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
 function generateRandomString() {
-
+  let unique = "";
+  let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (let i = 0; i < 6; i++) {
+    unique += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return unique
 }
+console.log(generateRandomString());
 
 app.get("/", (req, res) => {
   res.send("Hello!");
