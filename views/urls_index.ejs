@@ -13,6 +13,9 @@
     <!-- Add EJS code here -->
   <h1><% for (var key in urls) {%>
   <h2> short url: <%= key %> long url: <%= urls[key] %></h2>
+  <form method="POST" action="/urls/<%= key %>/delete">
+  <p><input type="submit" class=" btn" value="Delete URL" /> </p>
+  </form>
   <%} %></h1>
   <a href="#">new url</a>
 
