@@ -13,12 +13,12 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
 function generateRandomString() {
-  let unique = "";
+  let shortURL = "";
   let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   for (let i = 0; i < 6; i++) {
-    unique += possible.charAt(Math.floor(Math.random() * possible.length));
+    shortURL += possible.charAt(Math.floor(Math.random() * possible.length));
   }
-  return unique
+  return shortURL
 }
 console.log(generateRandomString());
 
@@ -32,7 +32,7 @@ app.listen(PORT, () => {
 
 app.post("/urls", (req, res) => {
   console.log(req.body);  // Log the POST request body to the console
-  res.send("Ok");         // Respond with 'Ok' (we will replace this)
+  res.send(shortURL);         // Respond with 'Ok' (we will replace this)
 });
 
 app.get("/urls.json", (req, res) => {
