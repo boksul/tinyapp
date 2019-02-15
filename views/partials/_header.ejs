@@ -1,1 +1,16 @@
-<h1>TinyApp</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>TinyApp</h1>
+  <p>username = <%= username %></p>
+  <form action="/login" method="POST">
+    <label for="usernameField"></label>
+    <input type="text" name="username" id="usernameField">
+    <button>Submit</button>
+  </form>
+</body>
+</html>
