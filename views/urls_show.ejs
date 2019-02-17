@@ -13,14 +13,12 @@
     <!-- Add EJS code here -->
   <% for (let key in urls) { %>
     <% if (shortURL === key) { %>
-
-      <p>Short URL: <%= shortURL %> Long URL: <%= urls[shortURL] %></p>
-      <form method="POST" action="/urls/<%=shortURL %>">
+      <form method="POST" action="/urls/<%= key %>">
+        <p> Short URL: <%= shortURL %> </p>
         <label for="longURL">URL:</label>
-        <input id="longURL" type="text" name="longURL" placeholder=<%= urls[key].url %>
+        <input id="longURL" type="text" name="longURL" placeholder=<%= urls[key].url %> style="width: 300px">
         <p> Update URL: <input type="submit" class=" btn" value="Update" /> </p>
       </form>
-
   <% } %>
 <% } %>
 
