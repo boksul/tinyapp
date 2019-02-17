@@ -6,11 +6,17 @@
 </head>
 <body>
   <h1>TinyApp</h1>
-  <p>username = <%= username %></p>
-  <form action="/login" method="POST">
-    <label for="usernameField"></label>
-    <input type="text" name="username" id="usernameField">
-    <button>Submit</button>
-  </form>
+  <% if (username) { %>
+    <h1>Welcome! <%= username %> </h1>
+      <form action="/logout" method="POST">
+        <button>logout</button>
+      </form>
+  <% } else { %>
+    <form action="/login" method="POST">
+      <label>username</label>
+        <input type="text" name="username" id="usernameField">
+      <button>sign in</button>
+    </form>
+  <% } %>
 </body>
 </html>

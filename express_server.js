@@ -51,16 +51,13 @@ app.get("/urls/new", (req, res) => {
   res.render("urls_new", templateVars);
 });
 
-app.get("/hello", (req, res) => {
-  res.send("<html><body>Hello <b>World</b></body></html>\n");
-});
-
 app.get("/urls", (req, res) => {
   let templateVars = {
   username: req.cookies["username"],
   urls: urlDatabase
   // ... any other vars
   };
+
 res.render("urls_index", templateVars);
 });
 
@@ -114,17 +111,18 @@ app.post("/urls/:shortURL", (req, res) => {
 
 app.post("/login", (req, res) => {
   let userId = req.body.username;
-  // let randNum = generateRandomString();
   res.cookie('username', userId);
-  console.log(`username = ${req.body.username}`);
-  //redirect to urls_index page
-  let templateVars = { urls: urlDatabase, username: req.cookies["username"] };
-  res.render('urls_index', templateVars);
+  res.redirect('/urls');
+
+
+  // res.cookie('username', userId);
+  // console.log(`username = ${req.body.username}`);
+  // //redirect to urls_index page
+  // let templateVars = { urls: urlDatabase, username: req.cookies["username"] };
+  // res.render('urls_index', templateVars);
 });
 
 app.post('/logout', (req, res) => {
-
-  req.session = null;
+  res.clearCookie('username');
   res.redirect("/urls");
-
 });
