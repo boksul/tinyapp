@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <title>TinyApp</title>
-</head>
-<body style="font-size:20px; padding:50px;">
-  <% include ./partials/_header.ejs %>
+  <head>
+    <title>TinyApp</title>
+  </head>
+  <body style="font-size:20px; padding:50px;">
     <!-- Add EJS code here -->
-  <% for (let key in urls) { %>
-    <% if (shortURL === key) { %>
-
-      <p>Short URL: <%= shortURL %> Long URL: <%= urls[shortURL] %></p>
-      <form method="POST" action="/urls/<%=shortURL %>">
-        <label for="longURL">URL:</label>
-        <input id="longURL" type="text" name="longURL" placeholder=<%= urls[key].url %>
-        <p> Update URL: <input type="submit" class=" btn" value="Update" /> </p>
-      </form>
-
-  <% } %>
-<% } %>
-
-</body>
+    <% for (var x in shortURL) {%>
+    <form method="POST" action="/urls/<%= shortURL[x] %>/edit">
+      <label for="shortURL">shortURL:<%= shortURL[x] %></label>
+      <input name="longURL" type="longURL" placeholder="longURL" style="width: 300px">
+      <p><input type="submit" class=" btn" value="Update"> </p>
+    </form>
+    <%} %>
+  </body>
 </html>
