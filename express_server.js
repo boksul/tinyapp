@@ -110,6 +110,13 @@ app.post("/login", (req, res) => {
   }
 });
 
+
+app.get("/urls/:shortURL", (req, res) => {
+  const shortURL = req.params.shortURL
+  const longURL = urlDatabase[shortURL]
+  res.redirect(longURL);
+});
+
 app.get('/login', (req, res) => {
   res.render('urls_login')
 })
